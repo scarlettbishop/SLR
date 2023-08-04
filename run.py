@@ -5,11 +5,15 @@ from cvzone.ClassificationModule import Classifier
 import numpy as np
 import math
 
-cap = cv2.VideoCapture(0)
-detector = HandDetector(maxHands=1)
+# This run currently have a model trained upon 3 classes A, B, C
+
+cap = cv2.VideoCapture(0) # cv2 video capture object
+detector = HandDetector(maxHands=1) # Limiting the number of hands to 1 for simplicity
+
+# ⬇️ are the paths to the model and the labels file
 modelKerasPath = "D:\\College\\sem_7\\LU\\Machine Learning\\Project\\SLR\\Model\\keras_model.h5"
 modelLabelsPath = "D:\\College\\sem_7\\LU\\Machine Learning\\Project\\SLR\\Model\\labels.txt"
-classifier = Classifier(modelKerasPath , modelLabelsPath)
+classifier = Classifier(modelKerasPath , modelLabelsPath) # This is our classifier Model Object
 
 offset = 20
 imgSize = 300
@@ -17,7 +21,7 @@ imgSize = 300
 # folder = "Data/C"
 counter = 0
 
-labels = ["A", "B", "C"]
+labels = ["A", "B", "C" , "D" , "E" , "F" , "G" , "H" , "I" , "K" , "L" , "M" , "N" , "O" , "P" , "Q" , "R" ,  "T" , "U" , "V" , "W" , "X" , "Y" , "Z"]
 
 while True:
     success, img = cap.read()
@@ -53,7 +57,7 @@ while True:
                 hGap = math.ceil((imgSize - hCal) / 2)
                 imgWhite[hGap:hCal + hGap, :] = imgResize
                 prediction, index = classifier.getPrediction(imgWhite, draw=False)
-        except:
+        except: # Here I would love to add the exception for the case when the empty resize values are passed to the view
             ...
         cv2.rectangle(imgOutput, (x - offset, y - offset-50),
                       (x - offset+90, y - offset-50+50), (255, 0, 255), cv2.FILLED)
