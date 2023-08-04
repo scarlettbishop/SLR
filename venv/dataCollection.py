@@ -10,7 +10,7 @@ detector = HandDetector(maxHands=1)
 offset = 20
 imgSize = 300
 
-filePath = "C:\\Users\\dhima\\Desktop\\SLR\\data\\C"
+filePath = "D:\\College\\sem_7\\LU\\Machine Learning\\Project\\SLR\\data\\P"
 counter = 0
 
 while True:
